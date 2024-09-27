@@ -28,4 +28,21 @@ public class Login {
                 return false;
             }
 }
+          
+    public  boolean PasswordComplexity(String enteredpassword){
+        //Methods for ensuring entered password meets Password Complexity requirements
+        if (enteredpassword.length()>=8 && enteredpassword.contains(".[A-Z].")&& enteredpassword.contains(".[0-9].")&& enteredpassword.contains("!")||enteredpassword.contains("@")||enteredpassword.contains("#")||enteredpassword.contains("$")||enteredpassword.contains("%")||enteredpassword.contains("^")||enteredpassword.contains("&")){
+          //Statement that executes if entered password meets Password complexity requuirements
+            System.out.println("Password successfully captured");
+            return true;
+            
+        }
+        else{
+            //Statement that executes if entered password does not meet Password complexity requirements
+            System.out.println("Password is not correctly formatted ,please ensure that the password contains atleast 8 characters,a capital letter,a number and a special character ");
+                    return false;
+                    }
+        
+    }
 }
+
