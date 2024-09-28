@@ -19,7 +19,7 @@ class Login {
 
          public boolean checkusername(String enteredusername){
     //ensuring that the entered username is formatted correctly
-            if (enteredusername.contains("_")&&enteredusername.length()<=5){
+            if (enteredusername.contains("_")&& enteredusername.length() > 1&&enteredusername.length()<=5){
               System.out.println( "Username successfully captured" );
                
                return true;
@@ -80,4 +80,19 @@ class Login {
         
         
     }
+           public  String loginUser(String enteredusername,String enteredpassword){
+       
+       
+        //ensuring login details entered matches the login details stored when the user register
+        if(enteredusername.equals(username)&&enteredpassword.equals(password)){
+            
+            return"Welcome:"+firstname+""+lastname+"It is great to see you again";
+            
+            
+        }
+        else{
+       return" Username or password incorrect, please try again";
+        }
+           }
+           
 }

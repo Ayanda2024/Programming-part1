@@ -11,6 +11,10 @@ package com.mycompany.phase1.programming;
 public class Phase1Programming {
 
     public static void main(String[] args) {
+        //creating an instance of the class
         Login login=new Login();
+        //Method that returns necessary registration messages 
+       String registrationmessage=login.Registeruser();
+       System.out.println(registrationmessage);
     }
 }

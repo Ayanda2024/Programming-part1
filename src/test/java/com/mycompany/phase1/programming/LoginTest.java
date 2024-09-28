@@ -58,5 +58,24 @@ public class LoginTest {
     assertEquals(expResult, result);
        }
    
+    @Test
+    public void testcheckusername_lenght(){
+        // Test case 4: Username too long
+   String enteredusername = "Ngwenya_"; 
+    boolean expResult = false; 
+    boolean result = my.checkusername(enteredusername); 
+    assertEquals(expResult, result);
+
     
+    
+    }
+     @Test
+    public void testcheckusername_underscore(){
+        String enteredusername = "_"; 
+    boolean expResult = false; 
+    boolean result = my.checkusername(enteredusername); 
+    assertEquals(expResult, result);
+    
+    
+    }
 }
