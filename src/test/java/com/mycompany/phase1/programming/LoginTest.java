@@ -30,7 +30,7 @@ public class LoginTest {
 
     @Test
     public void testCheckusername() {
-        //Validate username input validation for Empty string
+        //Test case 1:Validate username input validation for Empty string
         System.out.print("checkusername");
         String enteredusername="";
         boolean expResult=false;  //The system shall return a value of false for any empty username
@@ -39,5 +39,24 @@ public class LoginTest {
         assertEquals(expResult,result);//Confirm actual result matches expected outcome
         
     }
+    @Test
+       public  void testcheckusername_Validusername(){
+         //Testcase2
+    String enteredusername="give_";
+     boolean expResult=true;
+    boolean result=my.checkusername(enteredusername);
+    
+    assertEquals(expResult,result);  
+       }     
+   
+      @Test
+      // Test case 3: Username without underscore
+       public void testCheckusername_Nounderscore(){
+          String enteredusername = "give"; 
+    boolean expResult = false; 
+    boolean result = my.checkusername(enteredusername); 
+    assertEquals(expResult, result);
+       }
+   
     
 }

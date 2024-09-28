@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.mycompany.phase1.programming;
-
+import java.util.Scanner;
 /**
  *
  * @author RC_Student_lab
@@ -42,6 +42,42 @@ class Login {
             System.out.println("Password is not correctly formatted ,please ensure that the password contains atleast 8 characters,a capital letter,a number and a special character ");
                     return false;
                     }
+        
+    }
+          public  String Registeruser(){
+        //Creating an object of the Scanner
+        Scanner sc=new Scanner(System.in);
+        
+        //Prompting the user 
+        System.out.println("Enter your username:");
+       enteredusername=sc.next();
+        
+        System.out.println("Enter your password:");
+        enteredpassword=sc.next();
+        
+        System.out.println("Enter your firstname:");
+         firstname=sc.next();
+        
+        System.out.println("Enter your lastname:");
+         lastname=sc.next();
+        
+         //Registration logic
+         System.out.println("Username:"+enteredusername);
+         
+        //Message that outputs if username format is correct and if the passwordcomplexity requirement are met
+            
+        if (checkusername(enteredusername)&&PasswordComplexity(enteredpassword)){
+            
+            System.out.println("You have been succesfully registered username:"+enteredusername);
+           
+          return "Account created Successfully" ;
+        }
+        //Message that outputs if username format is incorrect correct or passwordcomplexity requirements are not met
+        else {
+            System.out.println("Username incorrectly formatted or PasswordComplexity requirements not met");
+        }
+            return "Failed to Create Account";
+        
         
     }
 }
