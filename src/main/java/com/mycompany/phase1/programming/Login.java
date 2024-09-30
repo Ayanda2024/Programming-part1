@@ -17,20 +17,24 @@ class Login {
         String enteredusername;
         String enteredpassword;
 
+        //Function that ensures that the entered username is formatted correctly
          public boolean checkusername(String enteredusername){
-    //ensuring that the entered username is formatted correctly
+    // using an if statement to validate enteredusername and password
             if (enteredusername.contains("_")&& enteredusername.length() > 1&&enteredusername.length()<=5){
+                //Statement that executes when the format of the username is correct
               System.out.println( "Username successfully captured" );
                
                return true;
             }
             else{
+                //Statement that executes when the format of the usernname is incorrect
                 System.out.println("Username is not correctly formatted ,please ensure that your username contains an underscore and is no more than 5 characters in length");
                 return false;
             }
 }
+         //Function for ensuring entered password meets Password Complexity requirements
          public  boolean PasswordComplexity(String enteredpassword){
-        //Methods for ensuring entered password meets Password Complexity requirements
+        // using an if statement to ensure password complexity rules are met
         if (enteredpassword.length()>=8 && enteredpassword.contains(".[A-Z].")&& enteredpassword.contains(".[0-9].")&& enteredpassword.contains("!")||enteredpassword.contains("@")||enteredpassword.contains("#")||enteredpassword.contains("$")||enteredpassword.contains("%")||enteredpassword.contains("^")||enteredpassword.contains("&")){
           //Statement that executes if entered password meets Password complexity requuirements
             System.out.println("Password successfully captured");
@@ -45,10 +49,10 @@ class Login {
         
     }
           public  String Registeruser(){
-        //Creating an object of the Scanner
-        Scanner sc=new Scanner(System.in);
         
-        //Prompting the user 
+        //Creating a scanner object
+        Scanner sc=new Scanner(System.in);
+        //Prompting the user for information required to create an account
         System.out.println("Enter your username:");
        enteredusername=sc.next();
         
@@ -81,20 +85,21 @@ class Login {
         
     }
            public  String loginUser(String enteredusername,String enteredpassword){
+           
        
-       
-        //ensuring login details entered matches the login details stored when the user register
+        //ensuring login credentials entered matches the login credentials stored when the user register
         if(enteredusername.equals(username)&&enteredpassword.equals(password)){
-            
+            //message that outputs if the tested condition is true
             return"Welcome:"+firstname+""+lastname+"It is great to see you again";
             
             
         }
         else{
+            //message that outputs if tested condition is false
        return" Username or password incorrect, please try again";
         }
            }
-           //Method that returns login status
+           //Method that returns relevant login status
         public String returnLoginStatus(boolean isLoggedIn){
             if(isLoggedIn){
                 return"Login Successful";
@@ -105,13 +110,7 @@ class Login {
             }
         }
 
-    private String getfirstname() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    private String gelastname() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+  
         }
 
 

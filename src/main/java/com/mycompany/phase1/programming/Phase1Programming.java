@@ -11,20 +11,20 @@ import java.util.Scanner;
 public class Phase1Programming {
 
     public static void main(String[] args) {
-        //creating an object of the scanner
+        //Creation of a scanner object
         Scanner sc=new Scanner(System.in);
         //creating an instance of the class
         Login login=new Login();
-        //Method that returns necessary registration messages 
-       String registrationmessage=login.Registeruser();
-       System.out.println(registrationmessage);
-       //Prompts for login
+        //function that generates required account creation messages 
+       String accountcreationmessages=login.Registeruser();
+       System.out.println(accountcreationmessages);
+      
+        //Method that checks if user has provided the correct username and password
+         //Asking the user for login details
        System.out.println("Please enter username");
-       String enteredusername=sc.next();
+      String enteredusername=sc.next();
        System.out.println("Enter password");
        String enteredpassword=sc.next();
-        //Method that checks if user has provided the correct username and password
-        
         
         String validation=login.loginUser(enteredusername,enteredpassword);
         System.out.println(validation);
