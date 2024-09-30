@@ -94,5 +94,24 @@ class Login {
        return" Username or password incorrect, please try again";
         }
            }
-           
-}
+           //Method that returns login status
+        public String returnLoginStatus(boolean isLoggedIn){
+            if(isLoggedIn){
+                return"Login Successful";
+            
+        }
+            else{
+                return"login failed";
+            }
+        }
+
+    private String getfirstname() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    private String gelastname() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+        }
+
+
