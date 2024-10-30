@@ -10,17 +10,17 @@ import java.util.Scanner;
  */
 class Login {
     //Declarations
-        String username="Aya_1";
-        String password="Berry@1992!";
-        String firstname="Ayanda";
-        String lastname="Ngwenya";
-        String enteredusername;
-        String enteredpassword;
+        String username;
+        String password;
+        String firstname;
+        String lastname;
+//        String enteredusername;
+//        String enteredpassword;
 
         //Function that ensures that the entered username is formatted correctly
-         public boolean checkusername(String enteredusername){
+         public boolean checkusername(String username){
     // using an if statement to validate enteredusername and password
-            if (enteredusername.contains("_")&& enteredusername.length() > 1&&enteredusername.length()<=5){
+            if (username.contains("_")&& username.length() > 1&&username.length()<=5){
                 //Statement that executes when the format of the username is correct
               System.out.println( "Username successfully captured" );
                
@@ -33,9 +33,9 @@ class Login {
             }
 }
          //Function for ensuring entered password meets Password Complexity requirements
-         public  boolean PasswordComplexity(String enteredpassword){
+         public  boolean PasswordComplexity(String password){
         // using an if statement to ensure password complexity rules are met
-        if (enteredpassword.length()>=8 && enteredpassword.contains(".[A-Z].")&& enteredpassword.contains(".[0-9].")&& enteredpassword.contains("!")||enteredpassword.contains("@")||enteredpassword.contains("#")||enteredpassword.contains("$")||enteredpassword.contains("%")||enteredpassword.contains("^")||enteredpassword.contains("&")){
+        if (password.length()>=8 && password.contains(".[A-Z].")&& password.contains(".[0-9].")&& password.contains("!")||password.contains("@")|password.contains("#")||password.contains("$")||password.contains("%")||password.contains("^")||password.contains("&")){
           //Statement that executes if entered password meets Password complexity requuirements
             System.out.println("Password successfully captured");
             return true;
@@ -48,39 +48,26 @@ class Login {
                     }
         
     }
-          public  String Registeruser(){
+          public  String Registeruser(String firstname, String lastname, String username, String password){
         
-        //Creating a scanner object
-        Scanner sc=new Scanner(System.in);
-        //Prompting the user for information required to create an account
-        System.out.println("Enter your username:");
-       enteredusername=sc.next();
         
-        System.out.println("Enter your password:");
-        enteredpassword=sc.next();
-        
-        System.out.println("Enter your firstname:");
-         firstname=sc.next();
-        
-        System.out.println("Enter your lastname:");
-         lastname=sc.next();
-        
-         //Registration logic
-         System.out.println("Username:"+enteredusername);
-         
-        //Message that outputs if username format is correct and if the passwordcomplexity requirement are met
-            
-        if (checkusername(enteredusername)&&PasswordComplexity(enteredpassword)){
-            
-            System.out.println("You have been succesfully registered username:"+enteredusername);
-           
-          return "Account created Successfully" ;
-        }
-        //Message that outputs if username format is incorrect correct or passwordcomplexity requirements are not met
-        else {
-            System.out.println("Username incorrectly formatted or PasswordComplexity requirements not met");
-        }
-            return "Failed to Create Account";
+              if(!checkusername(username)){
+                  System.out.println("incorrect username format");
+                  return "Username is not correctly formatted ,please ensure that your username contains an underscore and is no more than 5 characters in length";
+              }
+              
+              if(!PasswordComplexity(password)){
+                  System.out.println("Password is not formatted correctly");
+                  return "Please ensure that the password contains atleast 8 characters,a capital letter,a number and a special character ";
+              }
+              
+              this.firstname = firstname;
+              this.lastname = lastname;
+              this.username = username;
+              this.password = password;
+              
+              return "Both username and password are successfully captured";
+       
         
         
     }
