@@ -11,8 +11,16 @@ import javax.swing.*;
  * @author RC_Student_lab
  */
 public class Taskclass {
-   
+   String[] taskNames = new String[100];           // Array to hold task names
+    String[] taskDescriptions = new String[100];     // Array to hold task descriptions
+    String[] developerDetails = new String[100];     // Array to hold developer details
+    int[] taskDurations = new int[100];              // Array to hold task durations
+    String[] taskStatuses = new String[100];         // Array to hold task statuses
+    String[] taskIDs = new String[100];              // Array to hold task IDs
+    
+    
     //Declarations
+    
     String TaskName;
       int TaskNumber;
       String TaskDescription;
@@ -21,7 +29,7 @@ public class Taskclass {
       String TaskID;
    String TaskStatus;
       int Totalhours=0;
-      String allTaskDetails;
+      String allTaskDetails="";
     
        //Setter which will be used for testing
      public  void setTaskDetails(String TaskStatus, String DeveloperDetails, int TaskDuration, String TaskName, String TaskDescription, int par1) {
@@ -57,10 +65,13 @@ public class Taskclass {
             TaskNumber=k+1;
             //int TaskNum=Integer.parseInt(JOptionPane.showInputDialog(null, "Enter a TaskNumber"));
             //Prompting the user for the name of task to be performed
+            
             TaskName=JOptionPane.showInputDialog(null, "Enter the name of the task to be performed:");
+            taskNames[k]=TaskName;//Populate taskNames array with data
             
              //Prompting the user for a Task description
             TaskDescription=JOptionPane.showInputDialog(null, "Please enter a task description:");
+            taskDescriptions[k]=TaskDescription;//populate taskDescriptions with data
             
             //Calling the check task description method to immediatley offer the  user  with feedback
             checkTaskDescription(TaskDescription);
@@ -69,16 +80,19 @@ public class Taskclass {
             
             //Prompting the user for developer Details
             DeveloperDetails=JOptionPane.showInputDialog(null, "Please enter the developers firstname and lastname");
+            developerDetails[k]=DeveloperDetails;// populate developerDetails with data
             
             //Promptng the user for a task duration
             TaskDuration= Integer.parseInt(JOptionPane.showInputDialog(null, "Please enter the duration of the task (in hours)"));
+           taskDurations[k]=TaskDuration;//populate taskDurations with data
            
             //Accumulating the total number of hours across all tasks
             Totalhours +=TaskDuration;
             
             //Calling the Create Task ID inorder to generate it immediately
             CreateTaskID(TaskName,TaskNumber,DeveloperDetails);
-            
+            taskIDs[k]=CreateTaskID(TaskName,TaskNumber,DeveloperDetails);//populate taskIDs array
+           
             //Prompting user to enter a Task Status
             TaskStatus=JOptionPane.showInputDialog(null, "Please choose a Task status:\n"+"1.To do\n"+"2.Done\n"+"3.Doing");
            
@@ -99,7 +113,7 @@ public class Taskclass {
              
               }  
             
-         
+         taskStatuses[k] = TaskStatus; // Populate taskStatuses array
         returnTotalhours();
         // Append the details of the current task to the allTaskDetails string
             allTaskDetails += printTaskDetails(TaskStatus, DeveloperDetails, TaskNumber, TaskName, TaskDescription, TaskID, TaskDuration) + "\n\n";
@@ -122,21 +136,22 @@ public class Taskclass {
     } 
    //Method to ensure that task description does not exceed 50 characters in lenght
    public boolean checkTaskDescription(String TaskDescription){
-        while(TaskDescription.length()<50){
-            //Message that pops up if the tested condition is true
-            JOptionPane.showMessageDialog(null, "Task successfully Captured");
-            return true;
+         while (TaskDescription.length() > 50) {
+            // Message pops up if the description is too long
+            JOptionPane.showMessageDialog(null, "Task description cannot exceed 50 characters.");
             
+            // Prompt the user to re-enter a task description
+            TaskDescription = JOptionPane.showInputDialog(null, "Please enter a task description (max 50 characters):");
         }
-       
-            
-            //Message that pops if the if the tested condition is false
-            JOptionPane.showMessageDialog(null, "Please enter a task description of less than 50 characters");
-                
-            TaskDescription=JOptionPane.showInputDialog(null, "Please enter a task description:");
 
-       return false;
+        // If description is valid (length <= 50), show success message
+        if (TaskDescription.length() <= 50) {
+            JOptionPane.showMessageDialog(null, "Task successfully captured!");
+            return true;
         }
+        
+        return false; // Shouldn't be hit if validation is correct
+    }
    
     
    public String CreateTaskID (String TaskName,int TaskNumber,String DeveloperDetails){
@@ -181,8 +196,22 @@ public class Taskclass {
     public String getAllTaskDetails() {
         return allTaskDetails;
     }
-
+    //Method to show tasks with status "Done"
+    public void displayDoneTasks(){
+        StringBuilder doneTasks=new StringBuilder("Tasks with status 'Done':\n");
+    
+        for (int i=0;i<taskStatuses.length;i++){
+    if ("Done".equals(taskStatuses[i])) { 
+        doneTasks.append("Developer: ").append(developerDetails[i]) .append(", Task Name: ").append(taskNames[i]) .append(", Task Duration: ").append(taskDurations[i]) .append("\n"); } }
+        JOptionPane.showMessageDialog(null, doneTasks.toString()); 
     }
+    // Method to display the task with the longest duration 
+    public void displayLongestTask() { int maxDuration = 0; int maxIndex = 0; for (int i = 0; i < taskDurations.length; i++) { if (taskDurations[i] > maxDuration) { maxDuration = taskDurations[i]; maxIndex = i; } } String longestTask = "Task with the longest duration:\n" + "Developer: " + developerDetails[maxIndex] + ", Task Duration: " + taskDurations[maxIndex]; JOptionPane.showMessageDialog(null, longestTask); } }            
+                
+
+    
+
+    
 
     
 
