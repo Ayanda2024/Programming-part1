@@ -3,6 +3,7 @@
  */
 
 package com.mycompany.phase1.programming;
+
 import java.util.Scanner;
 import javax.swing.*;
 
@@ -82,8 +83,9 @@ public class Phase1Programming{
            case"1":
               tasks.addTasks();
              System.out.print("Total hours:"+tasks.returnTotalhours());
-      
-              
+             tasks.displayDoneTasks();
+             
+    
            break;
            
            case"2":JOptionPane.showMessageDialog(null, "Coming Soon...");
@@ -112,9 +114,10 @@ public class Phase1Programming{
            
           
            
-          
+}
+}
            
-       }
+       
        
                       
                
@@ -122,7 +125,7 @@ public class Phase1Programming{
          
        }
          
-}  
+ 
              
          
     

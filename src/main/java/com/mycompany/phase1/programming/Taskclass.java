@@ -11,13 +11,12 @@ import javax.swing.*;
  * @author RC_Student_lab
  */
 public class Taskclass {
-   String[] taskNames = new String[100];           // Array to hold task names
-    String[] taskDescriptions = new String[100];     // Array to hold task descriptions
-    String[] developerDetails = new String[100];     // Array to hold developer details
-    int[] taskDurations = new int[100];              // Array to hold task durations
-    String[] taskStatuses = new String[100];         // Array to hold task statuses
-    String[] taskIDs = new String[100];              // Array to hold task IDs
-    
+    String[] taskNames = new String[100]; // Array to hold task names
+    String[] taskDescriptions = new String[100]; // Array to hold task descriptions 
+    String[] developerDetails = new String[100]; // Array to hold developer details
+    int[] taskDurations = new int[100]; // Array to hold task durations
+    String[] taskStatuses = new String[100]; // Array to hold task statuses private 
+    String[] taskIDs = new String[100];
     
     //Declarations
     
@@ -196,6 +195,41 @@ public class Taskclass {
     public String getAllTaskDetails() {
         return allTaskDetails;
     }
+             public void DeveloperArray() {
+                 // Sample data for tasks
+        taskNames[0] = "Create login";
+        taskDescriptions[0] = "Create login page for the application.";
+        developerDetails[0] = "Mike Smith";
+        taskDurations[0] = 5;  // 5 hours
+        taskStatuses[0] = "To Do";
+        taskIDs[0] = "CR:1:ITH";
+        
+        taskNames[1] = "Create Add features";
+        taskDescriptions[1] = "Add features for creating user accounts.";
+        developerDetails[1] = "Edward Harrison";
+        taskDurations[1] = 8;  // 8 hours
+        taskStatuses[1] = "Doing";
+        taskIDs[1] = "CR:2:SON";
+      
+
+        taskNames[2] = "Create reports";
+        taskDescriptions[2] = "Generate reports for user activity.";
+        developerDetails[2] = "Samantha Paulson";
+        taskDurations[2] = 2;  // 2 hours
+        taskStatuses[2] = "Done";
+        taskIDs[2] = "CR:3:SON";
+       
+        taskNames[3] = "Add arrays";
+        taskDescriptions[3] = "Implement array manipulations.";
+        developerDetails[3] = "Glenda Oberholzer";
+        taskDurations[3] = 11;  // 11 hours
+        taskStatuses[3] = "To Do";
+        taskIDs[3] = "AD:4:ZER";
+       
+    }
+                                 
+                  
+             
     //Method to show tasks with status "Done"
     public void displayDoneTasks(){
         StringBuilder doneTasks=new StringBuilder("Tasks with status 'Done':\n");
@@ -205,11 +239,43 @@ public class Taskclass {
         doneTasks.append("Developer: ").append(developerDetails[i]) .append(", Task Name: ").append(taskNames[i]) .append(", Task Duration: ").append(taskDurations[i]) .append("\n"); } }
         JOptionPane.showMessageDialog(null, doneTasks.toString()); 
     }
-    // Method to display the task with the longest duration 
-    public void displayLongestTask() { int maxDuration = 0; int maxIndex = 0; for (int i = 0; i < taskDurations.length; i++) { if (taskDurations[i] > maxDuration) { maxDuration = taskDurations[i]; maxIndex = i; } } String longestTask = "Task with the longest duration:\n" + "Developer: " + developerDetails[maxIndex] + ", Task Duration: " + taskDurations[maxIndex]; JOptionPane.showMessageDialog(null, longestTask); } }            
-                
+}
+  
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+    
+
+
+
+
+
+
+
+
+
+
+
 
     
+
+           
+     
 
     
 
