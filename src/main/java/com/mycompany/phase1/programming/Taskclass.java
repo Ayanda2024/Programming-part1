@@ -314,6 +314,44 @@ public boolean deleteTask(String[] taskNames, String[] developerDetails, String[
 
     return true; // Task was deleted successfully
 }
+// Method to display a report that lists the full details of all captured tasks
+// Modify this method to return the report string instead of showing a dialog
+    public String displayReport(String[] taskNames, String[] taskDescriptions, String[] developerDetails, 
+                                int[] taskDurations, String[] taskStatuses, String[] taskIDs) {
+        
+        // Check for null arrays or mismatched lengths
+        if (taskNames == null || taskDescriptions == null || developerDetails == null || 
+            taskDurations == null || taskStatuses == null || taskIDs == null || 
+            taskNames.length != taskDescriptions.length || taskDescriptions.length != developerDetails.length ||
+            developerDetails.length != taskDurations.length || taskDurations.length != taskStatuses.length ||
+            taskStatuses.length != taskIDs.length) {
+            return "Error: Arrays are not properly initialized or have different lengths.";
+        }
+
+        StringBuilder result = new StringBuilder();
+        
+        for (int i = 0; i < taskNames.length; i++) {
+            if (taskNames[i] != null && !taskNames[i].isEmpty()) {
+                result.append("Task Name: ").append(taskNames[i])
+                      .append("\nTask Description: ").append(taskDescriptions[i])
+                      .append("\nDeveloper: ").append(developerDetails[i])
+                      .append("\nTask Duration: ").append(taskDurations[i]).append(" hours")
+                      .append("\nTask Status: ").append(taskStatuses[i])
+                      .append("\nTask ID: ").append(taskIDs[i])
+                      .append("\n-------------------------------------------------------------------------------------\n");
+            }
+            
+        }
+
+        // If there are no tasks, show an error message
+        if (result.length() > 0) {
+            JOptionPane.showMessageDialog(null, result.toString(), "All Tasks", JOptionPane.INFORMATION_MESSAGE); 
+            return result.toString();
+        } else {
+            JOptionPane.showMessageDialog(null, "No tasks available.", "Error", JOptionPane.ERROR_MESSAGE); 
+            return "No tasks available.";
+        }
+    }
 }
   
     

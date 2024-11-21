@@ -90,7 +90,31 @@ public class Phase1Programming{
         
         // Call the method to search for the task by name
              tasks.searchTaskByName(tasks.taskNames,tasks.developerDetails, tasks.taskStatuses, searchName);
+     
+             // Ask the user to input the developer's name to search for their tasks
+    String developerName = JOptionPane.showInputDialog(null, "Enter the developer's name to search tasks:");
+
+    // Call the method to search tasks by developer
+    tasks.searchTasksByDeveloper(tasks.taskNames, tasks.developerDetails, tasks.taskStatuses, developerName);
     
+
+//Display all the details of captured tasks
+       tasks.displayReport(tasks.taskNames, tasks.taskDescriptions, tasks.developerDetails, tasks.taskDurations, tasks.taskStatuses, tasks.taskIDs);
+         
+ // Ask the user for the task name to delete
+    String taskNameToDelete = JOptionPane.showInputDialog(null, "Enter the name of the task to delete:");
+    
+    
+   // Call the deleteTask method 
+    boolean isDeleted = tasks.deleteTask(tasks.taskNames, tasks.developerDetails, tasks.taskStatuses, taskNameToDelete);
+    
+    if (isDeleted) {
+        JOptionPane.showMessageDialog(null, "Task deleted successfully.", "Success", JOptionPane.INFORMATION_MESSAGE); } else 
+   
+    { JOptionPane.showMessageDialog(null, "Task not found.", "Error", JOptionPane.ERROR_MESSAGE); } 
+// Display all tasks after deletion 
+    StringBuilder allTasksAfterDeletion = new StringBuilder(); for (int i = 0; i < tasks.taskNames.length; i++) { if (tasks.taskNames[i] != null) { allTasksAfterDeletion.append("Task Name: ").append(tasks.taskNames[i]) .append(", Developer: ").append(tasks.developerDetails[i]) .append(", Task Status: ").append(tasks.taskStatuses[i]) .append("\n"); } } JOptionPane.showMessageDialog(null, allTasksAfterDeletion.toString(), "All Tasks", JOptionPane.INFORMATION_MESSAGE); 
+       
            break;
            
            case"2":JOptionPane.showMessageDialog(null, "Coming Soon...");
