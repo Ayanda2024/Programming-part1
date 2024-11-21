@@ -84,7 +84,12 @@ public class Phase1Programming{
               tasks.addTasks();
              System.out.print("Total hours:"+tasks.returnTotalhours());
              tasks.displayDoneTasks();
-             
+             tasks.displayLongestTask();
+            // Task name to search for (can be dynamically taken from user input)
+              String searchName = JOptionPane.showInputDialog(null, "Enter Task Name to search:");
+        
+        // Call the method to search for the task by name
+             tasks.searchTaskByName(tasks.taskNames,tasks.developerDetails, tasks.taskStatuses, searchName);
     
            break;
            

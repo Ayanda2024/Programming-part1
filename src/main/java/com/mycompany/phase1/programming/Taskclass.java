@@ -239,6 +239,24 @@ public class Taskclass {
         doneTasks.append("Developer: ").append(developerDetails[i]) .append(", Task Name: ").append(taskNames[i]) .append(", Task Duration: ").append(taskDurations[i]) .append("\n"); } }
         JOptionPane.showMessageDialog(null, doneTasks.toString()); 
     }
+    public void displayLongestTask() { 
+        int maxDuration = 0; 
+        int maxIndex = 0; 
+        for (int i = 0; i < taskDurations.length; i++) { 
+            if (taskDurations[i] > maxDuration) { 
+                maxDuration = taskDurations[i]; maxIndex = i; } }
+        String longestTask = "Task with the longest duration:\n" + "Developer: " + developerDetails[maxIndex] + ", Task Duration: " + taskDurations[maxIndex]; 
+        JOptionPane.showMessageDialog(null, longestTask); }
+
+    // Method to search for a task by name and display task name, developer, and task status
+    public void searchTaskByName(String[] taskNames, String[] developerDetails, String[] taskStatuses, String searchName) { 
+        for (int i = 0; i < taskNames.length; i++) { 
+            if (taskNames[i] != null && taskNames[i].equalsIgnoreCase(searchName)) { 
+                String result = "Task Name: " + taskNames[i] + "\n" + "Developer: " + developerDetails[i] + "\n" + "Task Status: " + taskStatuses[i];
+                JOptionPane.showMessageDialog(null, result, "Task Details", JOptionPane.INFORMATION_MESSAGE);
+                 return;}} 
+        JOptionPane.showMessageDialog(null, "Task not found.", "Error", JOptionPane.ERROR_MESSAGE); }
+    
 }
   
     
