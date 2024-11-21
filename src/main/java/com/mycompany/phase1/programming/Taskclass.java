@@ -257,6 +257,63 @@ public class Taskclass {
                  return;}} 
         JOptionPane.showMessageDialog(null, "Task not found.", "Error", JOptionPane.ERROR_MESSAGE); }
     
+    // Method to search for all tasks assigned to a developer and return a string
+    public String searchTasksByDeveloper(String[] taskNames, String[] developerDetails, String[] taskStatuses, String developerDetailsToSearch) {
+        StringBuilder result = new StringBuilder();
+
+        // Loop through the developer list to find matching developer
+        for (int i = 0; i < developerDetails.length; i++) {
+            if (developerDetails[i] != null && developerDetails[i].equalsIgnoreCase(developerDetailsToSearch)) {
+                result.append("Task Name: ").append(taskNames[i])
+                      .append(", Task Status: ").append(taskStatuses[i])
+                      .append("\n");
+            }
+        }
+
+        // If tasks found, return the result string
+        if (result.length() > 0) {
+            JOptionPane.showMessageDialog(null, result.toString());
+            return result.toString();
+        } else {
+            // If no tasks found, return an error message
+            return "No tasks found for developer: " + developerDetailsToSearch;
+        }
+    
+    }
+
+
+ 
+
+public boolean deleteTask(String[] taskNames, String[] developerDetails, String[] taskStatuses, String deleteName) {
+    int index = -1;
+
+    // Find the index of the task to delete
+    for (int i = 0; i < taskNames.length; i++) {
+        if (taskNames[i] != null && taskNames[i].equalsIgnoreCase(deleteName)) {
+            index = i;
+            break;  // Stop the loop once the task is found
+        }
+    }
+
+    // If task was not found, return false
+    if (index == -1) {
+        return false;
+    }
+
+    // Shift all tasks after the found task to the left
+    for (int i = index; i < taskNames.length - 1; i++) {
+        taskNames[i] = taskNames[i + 1]; // Shift the task name
+        developerDetails[i] = developerDetails[i + 1]; // Shift the developer details
+        taskStatuses[i] = taskStatuses[i + 1]; // Shift the task status
+    }
+
+    // Nullify the last element in all arrays (since it's been shifted)
+    taskNames[taskNames.length - 1] = null;
+    developerDetails[developerDetails.length - 1] = null;
+    taskStatuses[taskStatuses.length - 1] = null;
+
+    return true; // Task was deleted successfully
+}
 }
   
     
